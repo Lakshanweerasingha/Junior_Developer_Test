@@ -18,8 +18,8 @@ Before you begin, ensure you have the following installed:
 First, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/laravel-task-management.git
-cd laravel-task-management
+git clone https://github.com/Lakshanweerasingha/Junior_Developer_Test.git
+cd Junior_Developer_Test
 ```
 
 ### 2. Install Dependencies
