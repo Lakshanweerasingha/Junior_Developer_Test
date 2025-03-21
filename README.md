@@ -6,10 +6,10 @@ This is a Laravel-based task management application where users can create and m
 
 Before you begin, ensure you have the following installed:
 
-- PHP >= 7.4
+- Laravel Breeze , Tailwind CSS
 - Composer
-- MySQL (or any database of your choice)
-- Laravel 10.x (or compatible version)
+- MySQL 
+- Laravel 11.x 
 
 ## Installation Steps
 
