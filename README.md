@@ -1,7 +1,3 @@
-Here is the full `README.md` file you can use for your GitHub repository. This will guide beginners on how to set up, run, and use the Laravel application, including setting up the database, running seeders, and more.
-
----
-
 # Laravel Task Management App
 
 This is a Laravel-based task management application where users can create and manage tasks. The app allows users to create tasks, assign due dates, and track the status of tasks (Pending, Completed). This application includes functionality to assign tasks to users and supports database seeding for generating sample data.
