@@ -10,7 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class TaskRepository {
 
     public function getAllTasks(): LengthAwarePaginator {
-        return Auth::check() ? Auth::user()->tasks()->paginate(5) : new LengthAwarePaginator([], 0, 10);
+        return Auth::check() ? Auth::user()->tasks()->paginate(3) : new LengthAwarePaginator([], 0, 10);
     }
 
  

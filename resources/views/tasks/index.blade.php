@@ -92,10 +92,15 @@
                 <h3 class="text-lg font-bold">{{ $task->title }}</h3>
                 <p class="text-gray-600">{{ $task->description }}</p>
                 <p class="text-sm text-gray-500">Due: {{ $task->due_date }}</p>
+                
+                {{-- Status Badge --}}
                 <span class="inline-block mt-2 px-2 py-1 rounded text-white task-status {{ $task->status == 'Completed' ? 'bg-green-500' : 'bg-yellow-500' }}">
                     {{ ucfirst($task->status) }}
                 </span>
             </div>
+
+            {{-- Small Gap Before Buttons --}}
+            <div class="mb-2"></div> 
 
             {{-- Edit and Delete Buttons --}}
             <div class="mt-auto flex space-x-2">
@@ -105,6 +110,7 @@
         </div>
     @endforeach
 </div>
+
 
 
         {{-- Pagination --}}
