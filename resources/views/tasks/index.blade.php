@@ -8,23 +8,32 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-gray-100">
-
     <div class="container mx-auto px-4 py-6">
-        <h2 class="text-2xl font-bold mb-4">My Tasks</h2>
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold">My Tasks</h2>
+            
+            <!-- Logout Button -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+                    Logout
+                </button>
+            </form>
+        </div>
 
-        {{-- Success Message --}}
+        <!-- Success Message -->
         @if(session('success'))
             <div class="bg-green-500 text-white p-3 mb-4 rounded">
                 {{ session('success') }}
             </div>
         @endif
 
-        {{-- Create Task Button --}}
+        <!-- Create Task Button -->
         <div class="mb-4">
             <a href="{{ route('tasks.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Create New Task</a>
         </div>
 
-        {{-- Table Layout --}}
+        <!-- Table Layout -->
         <div class="overflow-x-auto mb-6">
             <table class="table-fixed w-full border-collapse border border-gray-300">
                 <thead>
@@ -49,12 +58,12 @@
                                 </label>
                             </td>
                             <td class="border p-3 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                                {{-- Edit Button --}}
+                                <!-- Edit Button -->
                                 <a href="{{ route('tasks.edit', $task->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition w-full sm:w-auto text-center">
                                     Edit
                                 </a>
 
-                                {{-- Delete Button --}}
+                                <!-- Delete Button -->
                                 <button class="bg-red-500 text-white px-4 py-2 rounded w-full sm:w-auto sm:ml-2 text-center delete-task" data-task-id="{{ $task->id }}">
                                     Delete
                                 </button>
@@ -65,27 +74,38 @@
             </table>
         </div>
 
-        {{-- Card Layout --}}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach($tasks as $task)
-            <div class="p-4 border rounded-lg shadow-lg bg-white task-card" data-task-id="{{ $task->id }}">
-    <h3 class="text-lg font-bold">{{ $task->title }}</h3>
-    <p class="text-gray-600">{{ $task->description }}</p>
-    <p class="text-sm text-gray-500">Due: {{ $task->due_date }}</p>
-    <span class="inline-block mt-2 px-2 py-1 rounded text-white task-status {{ $task->status == 'Completed' ? 'bg-green-500' : 'bg-yellow-500' }}">
-        {{ ucfirst($task->status) }}
-    </span>
 
-    {{-- Edit and Delete Buttons --}}
-    <div class="mt-4 flex space-x-2">
-        <a href="{{ route('tasks.edit', $task->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition">Edit</a>
-        <button class="bg-red-500 text-white px-4 py-2 rounded delete-task" data-task-id="{{ $task->id }}">Delete</button>
-    </div>
+
+
+
+
+
+
+
+
+
+        {{-- Card Layout --}}
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    @foreach($tasks as $task)
+        <div class="p-4 border rounded-lg shadow-lg bg-white flex flex-col min-h-[200px]">
+            <div class="flex-grow">
+                <h3 class="text-lg font-bold">{{ $task->title }}</h3>
+                <p class="text-gray-600">{{ $task->description }}</p>
+                <p class="text-sm text-gray-500">Due: {{ $task->due_date }}</p>
+                <span class="inline-block mt-2 px-2 py-1 rounded text-white task-status {{ $task->status == 'Completed' ? 'bg-green-500' : 'bg-yellow-500' }}">
+                    {{ ucfirst($task->status) }}
+                </span>
+            </div>
+
+            {{-- Edit and Delete Buttons --}}
+            <div class="mt-auto flex space-x-2">
+                <a href="{{ route('tasks.edit', $task->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition">Edit</a>
+                <button class="bg-red-500 text-white px-4 py-2 rounded delete-task" data-task-id="{{ $task->id }}">Delete</button>
+            </div>
+        </div>
+    @endforeach
 </div>
 
-                </div>
-            @endforeach
-        </div>
 
         {{-- Pagination --}}
         <div class="mt-6">
